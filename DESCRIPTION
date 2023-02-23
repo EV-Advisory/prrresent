@@ -7,12 +7,16 @@ Maintainer: EV Advisory <info@evadvisory.ca>
 Description: This package helps build presentations and decks for a specific template 
   used at EV Advisory. It is an extensible package that will evolve to handle decks with 
   a specific nomenclature for automating presentation building.  
-License: MIT License
+License: file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports: 
-  officer
-  ggplot2
-  magrittr
+  officer,
+  magrittr,
+  flextable,
+  here,
+  methods
 Suggest:
-  glue
+  glue,
+  methods
+RoxygenNote: 7.2.3
