@@ -10,3 +10,9 @@ Description: This package helps build presentations and decks for a specific tem
 License: MIT License
 Encoding: UTF-8
 LazyData: true
+Imports: 
+  officer
+  ggplot2
+  magrittr
+Suggest:
+  glue
