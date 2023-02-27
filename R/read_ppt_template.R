@@ -14,8 +14,10 @@
 #' \dontrun{
 #' doc <- read_ppt_template("default-eva-template.potx")
 #' }
-#' 
-read_ppt_template <- function(folder_location = "data",document_name = "default-eva-template.potx") {
-  doc <- officer::read_pptx(here::here(folder_location, document_name))
+#'
+read_ppt_template <- function(folder_location = "inst/extdata",document_name = "default-eva-template.potx") {
+
+  if(!interactive())doc<-officer::read_pptx(system.file("extdata","default-eva-template.potx",package = "prrresent"))
+  if(interactive())doc <- officer::read_pptx(here::here(folder_location, document_name))
   return(doc)
 }

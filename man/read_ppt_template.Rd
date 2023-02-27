@@ -5,7 +5,7 @@
 \title{Read PowerPoint Template}
 \usage{
 read_ppt_template(
-  folder_location = "data",
+  folder_location = "inst/extdata",
   document_name = "default-eva-template.potx"
 )
 }
