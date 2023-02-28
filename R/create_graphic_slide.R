@@ -44,7 +44,7 @@ create_graphic_slide <- function(x,
   slide_layout <- layout_name
   stopifnot('Layout is not a graphic slide' = grepl("Graphic ", layout_name))
   stopifnot("Layout doesn't exist" = layout_name %in% layout_summary(x)$layout)
-
+  if(sum(grepl("*.png|*.jpeg|*.jpg|*.svg",slide_graphic))>0)slide_graphic<-officer::external_img(slide_graphic)
   officer::add_slide(x, layout = slide_layout, master = master_name) %>%
     officer::ph_with(
       x = .,
@@ -67,7 +67,7 @@ create_graphic_slide <- function(x,
         !grepl("Graphic Full", layout_name),
         officer::ph_with(
           x = .,
-          value = slide_graphic,
+          value = ,
           location = officer::ph_location_label(ph_label = "Content")
         ),
         officer::ph_with(
