@@ -1,7 +1,7 @@
 #' Create Title Slide
 #'
-#' This function creates a title slide in a PowerPoint template. It adds 
-#' a slide with the selected layout and adds a title, subtitle and picture 
+#' This function creates a title slide in a PowerPoint template. It adds
+#' a slide with the selected layout and adds a title, subtitle and picture
 #' to the slide.
 #'
 #' @param x The PowerPoint document to add the slide to.
@@ -37,11 +37,10 @@ create_title_slide <- function(x,
         !is.null(picture),
         ph_with(
           x = .,
-          .,
           value = officer::external_img(picture),
           location = officer::ph_location_label(ph_label = "Image Location")
         ),.
-        
+
       )
     }%>%
     ph_disclaimer(x=.)%>%

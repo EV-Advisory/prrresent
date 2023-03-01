@@ -30,8 +30,8 @@ create_title_slide(
 A PowerPoint slide with the selected layout and added title, subtitle and picture.
 }
 \description{
-This function creates a title slide in a PowerPoint template. It adds 
-a slide with the selected layout and adds a title, subtitle and picture 
+This function creates a title slide in a PowerPoint template. It adds
+a slide with the selected layout and adds a title, subtitle and picture
 to the slide.
 }
 \examples{

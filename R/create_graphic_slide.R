@@ -67,21 +67,6 @@ create_graphic_slide <- function(x,
         !grepl("Graphic Full", layout_name),
         officer::ph_with(
           x = .,
-          value = ,
-          location = officer::ph_location_label(ph_label = "Content")
-        ),
-        officer::ph_with(
-          x = .,
-          value = slide_graphic,
-          location = officer::ph_location_label(ph_label = "Body")
-        )
-      )
-    } %>%
-    {
-      `if`(
-        !grepl("Graphic Full", layout_name),
-        officer::ph_with(
-          x = .,
           value = slide_body,
           location = officer::ph_location_label(ph_label = "Body Text")
         ),

@@ -1,7 +1,7 @@
 Package: prrresent
 Type: Package
 Title: Presentation slides for automating deck creation and delivery
-Version: 0.1.1
+Version: 0.1.5
 Author: EV Advisory
 Maintainer: EV Advisory <info@evadvisory.ca>
 Description: This package helps build presentations and decks for a specific template 
