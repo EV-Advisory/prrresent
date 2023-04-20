@@ -1,0 +1,25 @@
+Package: prrresent
+Type: Package
+Title: Presentation slides for automating deck creation and delivery
+Version: 0.1.6
+Author: EV Advisory
+Maintainer: EV Advisory <info@evadvisory.ca>
+Description: This package helps build presentations and decks for a specific template 
+  used at EV Advisory. It is an extensible package that will evolve to handle decks with 
+  a specific nomenclature for automating presentation building.  
+License: file LICENSE
+Encoding: UTF-8
+LazyData: true
+Depends:
+  officer,
+  magrittr,
+  flextable,
+  here
+Imports: 
+  methods,
+  ggplot2
+RoxygenNote: 7.2.3
+Suggests: 
+  testthat (>= 3.0.0),
+  glue
+Config/testthat/edition: 3
