@@ -44,13 +44,20 @@ create_graphic_slide <- function(x,
   slide_layout <- layout_name
   stopifnot('Layout is not a graphic slide' = grepl("Graphic ", layout_name))
   stopifnot("Layout doesn't exist" = layout_name %in% layout_summary(x)$layout)
-  if(sum(grepl("*.png|*.jpeg|*.jpg|*.svg",slide_graphic))>0)slide_graphic<-officer::external_img(slide_graphic)
+  if (sum(grepl("*.png|*.jpeg|*.jpg|*.svg", slide_graphic)) > 0)
+    slide_graphic <- officer::external_img(slide_graphic)
   officer::add_slide(x, layout = slide_layout, master = master_name) %>%
-    officer::ph_with(
-      x = .,
-      value = slide_title,
-      location = officer::ph_location_label(ph_label = "Title")
-    ) %>%
+    {
+      `if`(
+        !grepl("No Title", layout_name),
+        officer::ph_with(
+          x = .,
+          value = slide_title,
+          location = officer::ph_location_label(ph_label = "Title")
+        ),
+        .
+      )
+    } %>%
     {
       `if`(
         grepl("Graphic Full", layout_name),
@@ -72,7 +79,7 @@ create_graphic_slide <- function(x,
         ),
         .
       )
-    }%>%
+    } %>%
     {
       `if`(
         !grepl("Graphic Full", layout_name),
@@ -93,8 +100,8 @@ create_graphic_slide <- function(x,
     officer::ph_with(
       value = footer_text,
       location = officer::ph_location_label(ph_label = "Footer Text")
-    )%>%
-    ph_disclaimer(x=.)%>%
-    ph_slide_number(x=.)
+    ) %>%
+    ph_disclaimer(x = .) %>%
+    ph_slide_number(x = .)
 
 }
