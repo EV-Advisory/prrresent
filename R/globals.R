@@ -1,3 +1,3 @@
 .onLoad<-function(lib, pkg){
-utils::globalVariables(c(".","offx","offy","cx","cy","ph_label"))
+utils::globalVariables(c(".","offx","offy","cx","cy","ph_label","slide_layout_properties"))
 }
