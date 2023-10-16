@@ -5,14 +5,11 @@
 \title{Read PowerPoint Template}
 \usage{
 read_ppt_template(
-  folder_location = "inst/extdata",
-  document_name = "default-eva-template.potx"
+  template_path = here::here("inst/extdata", "default-eva-template.potx")
 )
 }
 \arguments{
-\item{folder_location}{The folder that hosts the powerpoint template}
-
-\item{document_name}{The name of the PowerPoint template file to be read in.}
+\item{template_path}{The complete location of the powerpoint template.}
 }
 \value{
 A pptx object for further modifications.
