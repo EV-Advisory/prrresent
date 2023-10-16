@@ -41,7 +41,7 @@ create_column_slide <- function(x,
                                 layout_name = "Two Column",
                                 master_name = 'EVA - Standard') {
   # browser()
-  slide_layout <- layout_name
+  slide_layout_properties <- layout_properties(x, layout = layout_name)
   stopifnot('Layout is not a column slide' = grepl("Column", layout_name))
   stopifnot("Layout doesn't exist" = layout_name %in% layout_summary(x)$layout)
   stopifnot("Column Data Missing" = !is.null(column_data))
@@ -64,7 +64,7 @@ create_column_slide <- function(x,
               ncols)
 
   #Select the slide template
-  officer::add_slide(x, layout = slide_layout, master = master_name) %>%
+  officer::add_slide(x, layout = layout_name, master = master_name) %>%
     {
       #Determine if a main title exists
       `if`(
@@ -93,15 +93,27 @@ create_column_slide <- function(x,
     }) %>%
     #Set the section of the corresponding slide deck
     officer::ph_with(value = slide_section,
-                     location = officer::ph_location_label(ph_label = "Section")) %>%
-    #Populate the footer text
-    officer::ph_with(
-      value = footer_text,
-      location = officer::ph_location_label(ph_label = "Footer Text")
-    ) %>%
-    #Update the disclaimer, which is the default, typically
-    ph_disclaimer(x = .) %>%
-    #Add the slide number dynamically
-    ph_slide_number(x = .)
+                     location = officer::ph_location_label(ph_label = "Section")) %>% {
+                       #Add the disclaimer, if it exists
+                       `if`("Disclaimer" %in% slide_layout_properties$ph_label,
+                            ph_disclaimer(x = .),
+                            .)
+                     } %>% {
+                       #Add the slide number, if it exists
+                       `if`("Slide Number" %in% slide_layout_properties$ph_label,
+                            ph_slide_number(x = .),
+                            .)
+                     } %>% {
+                       #Add the footer, if it exists
+                       `if`(
+                         "Footer" %in% slide_layout_properties$ph_label,
+                         officer::ph_with(x=.,
+                           value = footer_text,
+                           location = officer::ph_location_label(ph_label = slide_layout_properties$ph_label[grepl("Footer", slide_layout_properties$ph_label)])
+                         ),
+                         .
+                       )
+                     } %>%
+    return(.)
 
 }
