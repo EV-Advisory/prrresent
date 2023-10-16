@@ -9,6 +9,7 @@ create_point_slide(
   slide_title = "Default Title for Point Slide",
   slide_subtitle = "Default Subtitle for Point Slide",
   slide_body = "Body Text",
+  footer_text = "",
   layout_name = "Point - Detail Bullet",
   master_name = "EVA - Standard"
 )
@@ -21,6 +22,8 @@ create_point_slide(
 \item{slide_subtitle}{The subtitle to be added to the slide.}
 
 \item{slide_body}{The body text or contents to be added to the slide.}
+
+\item{footer_text}{The footer text of the slide}
 
 \item{layout_name}{The name of the slide layout to be used. Default is "Title - Black".}
 
