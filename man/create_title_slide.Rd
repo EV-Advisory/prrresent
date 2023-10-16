@@ -9,6 +9,7 @@ create_title_slide(
   slide_title,
   slide_subtitle,
   picture,
+  footer_text = "",
   layout_name = "Title - Black",
   master_name = "EVA - Standard"
 )
@@ -21,6 +22,8 @@ create_title_slide(
 \item{slide_subtitle}{The subtitle to be added to the slide.}
 
 \item{picture}{The path to the picture to be added to the slide.}
+
+\item{footer_text}{The footer text of the slide.}
 
 \item{layout_name}{The name of the slide layout to be used. Default is "Title - Black".}
 
