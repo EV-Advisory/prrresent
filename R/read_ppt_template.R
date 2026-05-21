@@ -2,8 +2,7 @@
 #'
 #' This function reads in a PowerPoint template file and returns a pptx object to be used for further modifications.
 #'
-#' @param folder_location The folder that hosts the powerpoint template
-#' @param document_name The name of the PowerPoint template file to be read in.
+#' @param template_path The complete location of the powerpoint template.
 #'
 #' @return A pptx object for further modifications.
 #' @export
@@ -15,9 +14,20 @@
 #' doc <- read_ppt_template("default-eva-template.potx")
 #' }
 #'
-read_ppt_template <- function(folder_location = "inst/extdata",document_name = "default-eva-template.potx") {
+read_ppt_template <-
+  function(template_path = here::here("inst/extdata", "default-eva-template.potx")) {
+    #Find the template specified that is not the default
+    if (!interactive() &
+        is.null(template_path))
+      doc <-
+        officer::read_pptx(template_path)
 
-  if(!interactive())doc<-officer::read_pptx(system.file("extdata","default-eva-template.potx",package = "prrresent"))
-  if(interactive())doc <- officer::read_pptx(here::here(folder_location, document_name))
-  return(doc)
-}
+    #Find the default template of the powerpoint
+    if (!interactive())
+      doc <-
+        officer::read_pptx(system.file("extdata", "default-eva-template.potx", package = "prrresent"))
+    #If a different template exists and is specified, find the template in the location provided
+    if (interactive())
+      doc <- officer::read_pptx(template_path)
+    return(doc)
+  }
