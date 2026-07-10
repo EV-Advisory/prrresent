@@ -4,3 +4,4 @@
 .Ruserdata
 reports/
 builder-tests.R
+.codegraph/
