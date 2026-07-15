@@ -17,3 +17,8 @@ GEMINI.md
 .roo*
 memory-bank/
 .github/copilot-instructions.md
+gemini.md
+.claude/
+.cursor/
+copilot-instructions.md
+*.code-workspace
